@@ -12,7 +12,7 @@
             margin: 0;
             padding: 0;
             font-family: "Inter", sans-serif;
-            height: 100vh;
+            height: 100%;
             overflow: hidden;
             background: #ffffff;
         }
@@ -96,13 +96,24 @@
 
         /* ================= RIGHT CHAT AREA ================= */
 
+        #send-message-form {
+            flex-shrink: 0;
+            background: white;
+            border-top: 1px solid #ddd;
+        }
+
         .chat-window {
-            display: grid;
-            grid-template-rows: 88% 12%;
             background: #e5f3ff;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
         }
 
         .chat-header {
+            position: fixed;
+            width: 100%;
+            z-index: 1;
+            flex-shrink: 0;
             height: 60px;
             padding: 12px 18px;
             display: flex;
@@ -110,8 +121,8 @@
             gap: 12px;
             background: white;
             border-bottom: 1px solid #ddd;
-            margin-bottom: 20px;
         }
+
 
         .chat-header img {
             height: 42px;
@@ -130,10 +141,14 @@
 
         /* ================= MESSAGES ================= */
 
+        .messages {
+            padding: 20px;
+            position: relative;
+        }
+
         .messages-wrapper {
             flex: 1;
             overflow-y: auto;
-            padding: 20px;
             display: none;
         }
 
@@ -177,13 +192,9 @@
         /* ================= INPUT ================= */
 
         .chat-input {
-            height: 3.5vw;
             padding: 12px;
             display: flex;
             gap: 10px;
-            background: white;
-            border-top: 1px solid #ddd;
-            margin-bottom: 10px;
         }
 
         .chat-input input {
@@ -295,16 +306,16 @@
 
             <!-- INPUT -->
             {% if Threads %}
-                <form id="send-message-form">
-                    <div class="chat-input">
-                        <input id="input-message" placeholder="Message">
-                        <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
-                    </div>
-                </form>
-            {% else %}
-                <div style="text-align:center; padding:20px; color:#777;">
-                    No conversations yet. Add a friend to start chatting!
+            <form id="send-message-form">
+                <div class="chat-input">
+                    <input id="input-message" placeholder="Message">
+                    <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
                 </div>
+            </form>
+            {% else %}
+            <div style="text-align:center; padding:20px; color:#777;">
+                No conversations yet. Add a friend to start chatting!
+            </div>
             {% endif %}
 
 
@@ -409,6 +420,20 @@
             let id = $('.messages-wrapper.is_active').attr('chat-id')
             return id.replace("chat_", "")
         }
+
+        const message_box = document.getElementsByClassName('messages')
+        const chat_header = document.getElementsByClassName('chat-header')[0]
+
+        Array.from(message_box).forEach((message) => {
+            message.style.top = String(chat_header.getBoundingClientRect().height) + 'px'
+        })
+
+        window.addEventListener('resize', () => {
+            const header_heigth = chat_header.getBoundingClientRect().height
+            Array.from(message_box).forEach((message) => {
+                message.style.top = String(header_heigth) + 'px'
+            })
+        })
 
     </script>
 
