@@ -15,3 +15,9 @@
 3. Above command will install all dependencies required for project.
 > daphne webchat.asgi:application
 4. Web Application is now running
+
+## OR
+1. There is private docker image in ghcr
+   > docker pull ghcr.io/sagar-ph/webapp:latest
+2. use image: ghcr.io/sagar-ph/webapp:latest
+3. Instead of build: .
