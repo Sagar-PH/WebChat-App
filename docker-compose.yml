@@ -8,7 +8,6 @@ services:
       
   web:
     build: .
-    command: daphne -b 0.0.0.0 -p 8000 webchat.asgi:application
     ports:
       - "8000:8000"
     depends_on:
@@ -17,3 +16,4 @@ services:
       - .:/app
     environment:
       REDIS_HOST: redis
+
