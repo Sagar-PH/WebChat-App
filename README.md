@@ -18,6 +18,6 @@
 
 ## OR
 1. There is private docker image in ghcr
-   > docker pull ghcr.io/sagar-ph/webapp:latest
-2. use image: ghcr.io/sagar-ph/webapp:latest
-3. Instead of build: .
+> docker pull ghcr.io/sagar-ph/webapp:latest
+3. use image: ghcr.io/sagar-ph/webapp:latest
+4. Instead of build: .
