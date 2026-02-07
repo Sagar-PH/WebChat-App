@@ -74,3 +74,8 @@
 <hr />
 
 <p align="center">Made by <strong>Sagar</strong></p>
+
+<hr />
+
+<h2>Project Demo</h2>
+<img src="https://sagar-ph.github.io/Images/Chat-Project.png">
