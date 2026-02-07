@@ -78,4 +78,4 @@
 <hr />
 
 <h2>Project Demo</h2>
-<img src="https://sagar-ph.github.io/Images/Chat-Project.png">
+<img src="https://sagar-ph.github.io/Images/Chat-Project.png" width=600>
